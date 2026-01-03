@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>DazzleBeads | Anime-Inspired Cosmetics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0b0014, #1a0026);
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    header {
+      position: relative;
+      max-width: 1500px;
+      margin: 20px auto;
+      border-radius: 24px;
+      overflow: hidden;
+    }
+
+    .hero-wrapper {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 on mobile/tablet */
+      overflow: hidden;
+    }
+
+    .hero-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+      display: block;
+      transition: transform 1.2s ease;
+    }
+
+    header:hover .hero-img {
+      transform: scale(1.03);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55));
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .hero-overlay h1 {
+      font-size: 3.5rem;
+      color: #ff5ecb;
+      margin-bottom: 16px;
+    }
+
+    .hero-overlay p {
+      max-width: 600px;
+      opacity: 0.9;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .cta-btn {
+      margin-top: 30px;
+      padding: 16px 36px;
+      background: #ff5ecb;
+      color: #120018;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-3px) scale(1.08);
+      box-shadow: 0 0 25px rgba(255, 94, 203, 0.8);
+    }
+
+    section {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      color: #ff9de2;
+    }
+
+    .intro-text {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+      opacity: 0.85;
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .product {
+      position: relative;
+      background: rgba(255,255,255,0.08);
+      border-radius: 20px;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      transition: all 0.4s ease;
+    }
+
+    .product:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(255, 94, 203, 0.25);
+    }
+
+    .product img {
+      width: 100%;
+      height: 320px;
+      object-fit: fill;
+      transition: transform 0.6s ease;
+    }
+
+    .product:hover img {
+      transform: scale(1.08);
+    }
+
+    .product div {
+      padding: 20px;
+    }
+
+    .product h3 {
+      color: #ff9de2;
+      margin-bottom: 10px;
+      font-size: 1.4rem;
+    }
+
+    .product p {
+      opacity: 0.9;
+      line-height: 1.5;
+    }
+
+    .product::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.15), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.8s ease;
+      pointer-events: none;
+    }
+
+    .product:hover::after {
+      transform: translateX(100%);
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      opacity: 0.7;
+      font-size: 0.95rem;
+    }
+
+    /* PC / Desktop: Big fonts + fixed banner height */
+    @media (min-width: 1024px) {
+      .hero-wrapper {
+        padding-bottom: 0;
+        height: 600px;
+      }
+
+      .hero-overlay h1 {
+        font-size: 4.5rem;
+      }
+
+      .hero-overlay p {
+        font-size: 1.3rem;
+        max-width: 800px;
+      }
+
+      .cta-btn {
+        padding: 18px 42px;
+        font-size: 1.3rem;
+      }
+
+      header {
+        margin: 40px auto;
+        border-radius: 30px;
+      }
+    }
+
+    /* MOBILE ONLY: Smaller fonts everywhere */
+    @media (max-width: 760px) {
+      header {
+        margin: 10px auto;
+        border-radius: 18px;
+      }
+
+      .hero-overlay {
+        padding: 30px 20px;
+      }
+
+      .hero-overlay h1 {
+        font-size: 1rem;        /* Was 2.5rem → now smaller */
+      }
+
+      .hero-overlay p {
+        font-size: 0.50rem;     /* Smaller description */
+      }
+
+      .cta-btn {
+        padding: 12px 26px;     /* Slightly smaller button */
+        font-size: 0.60rem;
+      }
+
+      section {
+        padding: 60px 15px;
+      }
+
+      h2 {
+        font-size: 0.50rem;      /* Section titles smaller */
+        margin-bottom: 30px;
+      }
+
+      .intro-text {
+        font-size: 0.70rem;     /* Why section text */
+        line-height: 1;
+      }
+
+      .product h3 {
+        font-size: 1rem;      /* Product titles smaller */
+      }
+
+      .product p {
+        font-size: 0.7rem;      /* Product description smaller */
+      }
+
+      .product div {
+        padding: 16px;
+      }
+
+      footer {
+        font-size: 0.85rem;
+        padding: 30px 20px;
+      }
+
+      .products {
+        gap: 25px;
+      }
+
+      .product img {
+        height: 250px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-overlay h1 {
+        font-size: 1.8rem;      /* Even smaller on very small phones */
+      }
+
+      .cta-btn {
+        padding: 11px 24px;
+        font-size: 0.9rem;
+      }
+
+      h2 {
+        font-size: 1.6rem;
+      }
+
+      .product h3 {
+        font-size: 1.15rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="hero-wrapper">
+      <img src="images/hero.jpg" alt="DazzleBeads Hero" class="hero-img">
+    </div>
+
+    <div class="hero-overlay">
+      <h1>AnimeHeroes</h1>
+      <p>Anime-inspired cosmetics designed to make your beauty glow like magic.</p>
+      <a class="cta-btn" href="https://wa.me/977XXXXXXXXX">Order on WhatsApp</a>
+    </div>
+  </header>
+
+  <section>
+    <h2>Why AnimeHeroes?</h2>
+    <p class="intro-text">
+      We blend anime aesthetics with premium cosmetic craftsmanship — designed for bold, expressive beauty lovers.
+    </p>
+  </section>
+
+  <section>
+    <h2>Our Signature Collection</h2>
+    <div class="products">
+      <div class="product">
+        <img src="images/product1.jpg" alt="Anime Lip Tint">
+        <div>
+          <h3>Anime Lip Tint</h3>
+          <p>Vibrant shades inspired by anime heroines.</p>
+        </div>
+      </div>
+
+      <div class="product">
+        <img src="images/product2.jpg" alt="Glow Beads">
+        <div>
+          <h3>Glow Beads</h3>
+          <p>Handcrafted shimmer beads with a magical finish.</p>
+        </div>
+      </div>
+
+      <div class="product">
+        <img src="images/product3.jpg" alt="Limited Drop">
+        <div>
+          <h3>Limited Drops 10% discount</h3>
+          <p>Exclusive designs released in limited quantities.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 AnimeHeroes — Follow us on Instagram & TikTok
+  </footer>
+
+</body>
+</html>
